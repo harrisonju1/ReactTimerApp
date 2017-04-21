@@ -1,10 +1,25 @@
 var React = require('react');
+var {Link} = require('react-router');
 
 var About = (props) => {
   return(
     <div>
-      <h3>About</h3>
-      <p>Welcome to the about page!</p>
+      <h1 className="text-center">About Page</h1>
+      <p>This project was used to learn React web development</p>
+      <p>
+        Here are some of the tools I used:
+      </p>
+      <ul>
+        <li>
+          <a href="https://facebook.github.io/react">React</a> - This was the JavaScript framework used.
+        </li>
+        <li>
+          <a href="http://openweathermap.org">Open Weather Map</a> - Open Weather Map was used to search for weather data by city name.
+        </li>
+        <li>
+          <a href="https://facebook.com/jun.choi3">Best sex you can find</a> - Seriously he's free and clean!
+        </li>
+      </ul>
     </div>
   )
 };
