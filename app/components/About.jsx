@@ -4,7 +4,7 @@ var {Link} = require('react-router');
 var About = (props) => {
   return(
     <div>
-      <h1 className="text-center">About Page</h1>
+      <h1 className="text-center page-title">About Page</h1>
       <p>This project was used to learn React web development</p>
       <p>
         Here are some of the tools I used:
