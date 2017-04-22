@@ -1,12 +1,2 @@
-$space-large: 2.5rem;
-$color-title: #555;
-.page-title{
-  color: $color-title;
-  margin-top: $space-large;
-  margin-bottom: $space-large;
-
-}
-
-input[type=search]{
-  box-shadow: none;
-}
+@import "base/variables"; //leave off underscore and file extension
+@import "components/nav";
