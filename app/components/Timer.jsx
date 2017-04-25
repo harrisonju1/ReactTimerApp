@@ -1,7 +1,6 @@
 var React = require('react');
 var Clock = require('Clock');
-var TimerForm = require('TimerForm');
-var TimerControls = require('TimerControls');
+var Controls = require('Controls');
 
 var Timer = React.createClass({
   getInitialState: function(){
@@ -15,7 +14,7 @@ var Timer = React.createClass({
     if(this.state.timerStatus !== prevState.timerStatus){
       switch (this.state.timerStatus){
         case 'started':
-          this.startTimer();
+          this.handleStart();
           break;
         case 'stopped':
           this.setState({count:0});
@@ -31,24 +30,12 @@ var Timer = React.createClass({
   },
 
 
-  startTimer: function(){
-    this.timer = setInterval(() =>{
-      var newCount = this.state.count + 1;
+  handleStart: function(){
+    this.timer = setInterval(() => {
       this.setState({
-        count: newCount >= 0 ? newCount: 0
+        count:this.state.count + 1
       });
-
-      if( newCount === 0){
-        this.setState({timerStatus: 'stopped'});
-      }
     }, 1000);
-  },
-
-  handleSetTimer: function(seconds){
-    this.setState({
-      count: seconds,
-      timerStatus: 'started'
-    });
   },
 
   handleStatusChange:function(newStatus) {
@@ -56,21 +43,15 @@ var Timer = React.createClass({
   },
   render: function(){
     var {count, timerStatus} = this.state;
-    var renderControlArea = () => {
-      if (timerStatus !== 'stopped'){
-        return <TimerControls timerStatus={timerStatus} onStatusChange={this.handleStatusChange}/>;
-      } else{
-        return <TimerForm onSetTimer={this.handleSetTimer}/>;
-      }
-    };
+
 
     return (
       <div>
         <h1 className="page-title">Timer App</h1>
         <Clock totalSeconds={count}/>
-        {renderControlArea()}
+        <Controls countdownStatus={timerStatus} onStatusChange={this.handleStatusChange}/>
       </div>
-    );
+    )
   }
 });
 
